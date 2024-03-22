@@ -16,7 +16,7 @@ export default function VerifyEmailPage(){
     const [token,setToken] = useState("");
 
     const [verified,setVerified] = useState("");
-
+ 
     const [error,setError] = useState(false);
 
     async function verifyEmail(token:any){
