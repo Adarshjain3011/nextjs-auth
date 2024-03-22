@@ -1,4 +1,6 @@
 
+"use client"
+
 import Signup from "@/components/Signup";
 
 // import { useRouter } from "next/router";

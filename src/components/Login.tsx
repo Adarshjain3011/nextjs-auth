@@ -12,7 +12,7 @@ import Link from 'next/link';
 export default function Login() {
 
 
-    const router = useRouter();
+    const router = useRouter()
 
     async function loginHandler() {
 
@@ -56,7 +56,7 @@ export default function Login() {
 
     // }
 
-    const [userDetails, setUserDetails] = useState({ email: "", password: "" });
+    const [userDetails, setUserDetails] = React.useState({ email: "", password: "" });
 
     return <div className="m-auto flex justify-center items-center min-h-screen">
 

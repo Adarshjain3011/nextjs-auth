@@ -1,5 +1,6 @@
 
-export default function ({params}:any){
+import React from "react"
+export default function profileRelated({params}:any){
 
     return <div>
 
@@ -12,6 +13,8 @@ export default function ({params}:any){
     </div>
 
 }
+
+
 
 
 

@@ -1,82 +1,50 @@
+// Make sure to import React
 
-"use client"
-
-import axios from "axios";
+"use client "
 
 import React, { useState } from "react";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation"; // Correct import for useRouter
 
-import { useRouter } from 'next/navigation';
+import axios from "axios";
 
-
-
-import Link from 'next/link';
-
-
-export default function singnup(){
-
+export default function Signup() { // Corrected component name to start with uppercase letter
 
     const router = useRouter();
+    const [userData, setUserData] = useState("");
 
-
-    async function singnUpHandler(){
-
-
-        try{
-
-            const response = await axios.post("http://localhost:3000/api/auth/signup",userDetails);
-    
+    async function logoutHandler() {
+        try {
+            const response = await axios.get("http://localhost:3000/api/auth/logout");
             console.log(response);
-
-            router.push("/login");
-
-
-        }
-
-        catch(error){
-
+            router.push("/signup");
+        } catch (error) {
             console.log(error);
-
         }
-
-
     }
 
+    useEffect(() => {
+        async function getUserInfo(){
+            try {
+                const userData = await axios.get("http://localhost:3000/api/auth/me");
+                console.log("userData: ", userData?.data?.data);
+                setUserData(userData?.data?.data?._id);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getUserInfo();
+    }, []);
 
-    // const router = useRouter();
-
-    const [userDetails,setUserDetails] = useState({userName :"",email:"" ,password:""});
-
-    return <div className="m-auto flex justify-center items-center min-h-screen">
-
-        <div className="flex w-[300px] h-[250px] flex-col jus-center items-center gap-3 border-2 border-black p-3">
-
-            <input type="text" placeholder="enter your name" value={userDetails.userName}
-             className="p-3 pl-4" onChange={(e)=> setUserDetails({...userDetails,userName:e.target.value})}/>
-
-            <input type="email" value={userDetails.email}
-                    placeholder="enter your email" onChange={(e)=>setUserDetails({...userDetails,email:e.target.value})}/>
-
-            <input type="password" placeholder="enter your password" value={userDetails.password} onChange={(e)=>setUserDetails({...userDetails,password:e.target.value})}/>
-
-
-            <button className="bg-blue-600 w-[150px] p-2" onClick={singnUpHandler}>Sin in </button>
-            
-            <Link href="/login">
-
-                <div className="bg-blue-600 w-[150px] p-2">Move to login</div>
-
-            </Link>
-
-            
-        </div>      
-
-
-    </div>
+    return (
+        <div>
+            <h1>Welcome to signup page</h1>
+            <h2 className="bg-yellow-600 text-xl">
+                {userData === "" ? "Nothing" : userData}
+            </h2>
+            <button className="w-[200px] bg-red-600" onClick={logoutHandler}>Logout</button>
+        </div>
+    );
 }
-
-
-
-
-
 
