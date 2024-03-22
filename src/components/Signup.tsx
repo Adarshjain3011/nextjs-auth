@@ -28,16 +28,16 @@ export default function singnup(){
 
             const response = await axios.post("https://nextjs-auth-p973tr3v6-adarshs-projects-f27ee43e.vercel.app/signup",UserDetails);
     
-            console.log(response);
+            console.log(response)
 
             router.push("/login");
 
 
         }
 
-        catch(error){
+        catch(error:any){
 
-            console.log(error);
+            console.log(error.message);
 
         }
 
