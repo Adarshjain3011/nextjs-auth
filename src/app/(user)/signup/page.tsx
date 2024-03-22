@@ -3,7 +3,7 @@ import Signup from "@/components/Signup";
 
 // import { useRouter } from "next/router";
 
-export default function (){
+export default function signup(){
 
     // const router = useRouter();
 
