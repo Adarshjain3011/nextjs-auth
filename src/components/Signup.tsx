@@ -26,7 +26,7 @@ export default function singnup(){
 
         try{
 
-            const response = await axios.post("https://nextjs-auth-vert-theta.vercel.app/api/auth/signup",UserDetails);
+            const response = await axios.post("https://nextjs-auth-p973tr3v6-adarshs-projects-f27ee43e.vercel.app/signup",UserDetails);
     
             console.log(response);
 
